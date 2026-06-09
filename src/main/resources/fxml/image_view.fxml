@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox fx:id="rootPane" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.controller.ImageViewController"
+      spacing="10" style="-fx-background-color: #2b2b2b;">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Верхняя панель инструментов -->
+    <ToolBar style="-fx-background-color: #3c3f41;">
+        <Button fx:id="loadButton" text="📁 Загрузить папку" />
+        <Separator orientation="VERTICAL" />
+        <Label text="Фильтр:" textFill="white" />
+        <ComboBox fx:id="filterComboBox" prefWidth="100" />
+        <Separator orientation="VERTICAL" />
+        <Label text="Переход:" textFill="white" />
+        <ComboBox fx:id="transitionComboBox" prefWidth="120" />
+        <Separator orientation="VERTICAL" />
+        <Label text="Скорость:" textFill="white" />
+        <Slider fx:id="speedSlider" prefWidth="100" />
+        <Label fx:id="speedLabel" text="2.0 сек" textFill="white" />
+    </ToolBar>
+
+    <!-- Область для изображения -->
+    <VBox VBox.vgrow="ALWAYS" alignment="CENTER" style="-fx-background-color: #1e1e1e;">
+        <ImageView fx:id="imageView" fitWidth="800" fitHeight="600" preserveRatio="true" />
+    </VBox>
+
+    <!-- Панель навигации -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="firstButton" text="« Первый" style="-fx-font-size: 14px;" />
+        <Button fx:id="prevButton" text="‹ Назад" style="-fx-font-size: 14px;" />
+        <Label fx:id="counterLabel" text="0 из 0" style="-fx-font-size: 16px; -fx-text-fill: white;" />
+        <Button fx:id="nextButton" text="Вперед ›" style="-fx-font-size: 14px;" />
+        <Button fx:id="lastButton" text="Последний »" style="-fx-font-size: 14px;" />
+        <Button fx:id="autoPlayButton" text="▶ Авто" style="-fx-font-size: 14px;" />
+    </HBox>
+
+    <!-- Информационная панель -->
+    <HBox spacing="10" VBox.vgrow="NEVER">
+        <!-- Информация о файле -->
+        <VBox spacing="5" HBox.hgrow="ALWAYS" style="-fx-background-color: #3c3f41; -fx-padding: 10; -fx-border-radius: 5;">
+            <Label text="Информация о файле:" style="-fx-font-weight: bold; -fx-text-fill: #ffd700;" />
+            <Label fx:id="infoLabel" wrapText="true" textFill="white" />
+        </VBox>
+
+        <!-- EXIF данные -->
+        <VBox spacing="5" HBox.hgrow="ALWAYS" style="-fx-background-color: #3c3f41; -fx-padding: 10; -fx-border-radius: 5;">
+            <Label text="EXIF данные:" style="-fx-font-weight: bold; -fx-text-fill: #ffd700;" />
+            <TextArea fx:id="exifArea" editable="false" wrapText="true"
+                      prefRowCount="5" style="-fx-control-inner-background: #2b2b2b; -fx-text-fill: white;" />
+        </VBox>
+    </HBox>
+
+</VBox>
